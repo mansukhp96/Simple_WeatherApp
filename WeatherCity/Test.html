@@ -1,36 +1,21 @@
 <!doctype html>
 <html>
     <head>
-        <script src="angular.js"></script>>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="angular.js"></script>
+        <script src="script.js"></script>
     </head>
     <body ng-app="weatherApp" ng-controller="weatherController">
-        <div>
+            <div class="jumbotron text-center">
              <p>Enter City Name:<br><input type="text" id="Name" ng-model="cityName"></p>
              <button ng-click="send()">Get Weather</button>
-            <h1>{{cityName}}</h1>
+             <br><br>
+            <p id="city"></p>
+            <p id="tempf"></p>
         </div>
-        <script>
-            var myApp = angular.module("weatherApp",[]);
-            myApp.controller("weatherController", function($scope,$http){
-                var cityName;
-                $scope.send = function(){
-                    $scope.Name = cityName;
-                    var apiKey = "a591de92adcf5e271f5f78169919386f";
-                    var owu = "http://api.openweathermap.org/data/2.5/weather?q="+ $scope.cityName+ "&appid=" +apiKey;
-                     //console.log(owu);
-                    $http({
-                            method: 'get', 
-                            url: owu
-                        }).then(function (response) {
-                            console.log(response);
-                            $scope.temperature = response.data.main.temp;
-                            var tempf = $scope.temperature - 273; 
-                            document.write($scope.cityName);
-                            document.write("<br>");
-                            document.write(tempf+" Celsius");
-                });
-            }   
-            });
-        </script>>
     </body>
 </html>            

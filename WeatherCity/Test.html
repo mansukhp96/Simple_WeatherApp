@@ -9,11 +9,16 @@
         <script src="angular.js"></script>
         <script src="script.js"></script>
     </head>
-    <body ng-app="weatherApp" ng-controller="weatherController">
-            <div class="jumbotron text-center">
-             <p>Enter City Name:<br><input type="text" id="Name" ng-model="cityName"></p>
-             <button ng-click="send()">Get Weather</button>
+    <body align = "center" ng-app="weatherApp" ng-controller="weatherController">
+        <div class = "jumbotron text-centre" class="col-xs-4">    
+             <input type="text" class = "form-control" id="Name" ng-model="cityName" placeholder = "City Name">
              <br><br>
+             <p>
+                <button class = "btn btn-info" ng-click="send()">Get Weather
+                <span class = "glyphicon glyphicon-search"></span>
+                </button>
+            </p> 
+            <br><br>
             <p id="city"></p>
             <p id="tempf"></p>
         </div>

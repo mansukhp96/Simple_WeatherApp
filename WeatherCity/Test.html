@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="angular.js"></script>>
+    </head>
+    <body ng-app="weatherApp" ng-controller="weatherController">
+        <div>
+             <p>Enter City Name:<br><input type="text" id="Name" ng-model="cityName"></p>
+             <button ng-click="send()">Get Weather</button>
+            <h1>{{cityName}}</h1>
+        </div>
+        <script>
+            var myApp = angular.module("weatherApp",[]);
+            myApp.controller("weatherController", function($scope,$http){
+                var cityName;
+                $scope.send = function(){
+                    $scope.Name = cityName;
+                    var apiKey = "a591de92adcf5e271f5f78169919386f";
+                    var owu = "http://api.openweathermap.org/data/2.5/weather?q="+ $scope.cityName+ "&appid=" +apiKey;
+                     //console.log(owu);
+                    $http({
+                            method: 'get', 
+                            url: owu
+                        }).then(function (response) {
+                            console.log(response);
+                            $scope.temperature = response.data.main.temp;
+                            var tempf = $scope.temperature - 273; 
+                            document.write($scope.cityName);
+                            document.write("<br>");
+                            document.write(tempf+" Celsius");
+                });
+            }   
+            });
+        </script>>
+    </body>
+</html>            
